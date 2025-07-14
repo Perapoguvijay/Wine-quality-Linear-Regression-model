@@ -20,7 +20,7 @@ Mentored by **Omkar Nallagoni**, this project uses **Linear Regression** to pred
 - Live prediction display with Flask API
 - Beautiful wine-themed background 🍇
 
-🔗
+🔗https://github.com/Perapoguvijay/Wine-quality-Linear-Regression-model
 
 💬 I'd love your thoughts and suggestions! Open to feedback and collaborations!
 
