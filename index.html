@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wine Quality Predictor</title>
+  <style>
+    body {
+      background: url("/static/images.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      max-width: 400px;
+      color: white;
+    }
+
+    label {
+      margin-top: 15px;
+      display: block;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #f39c12;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e67e22;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🍷 Wine Quality Predictor</h2>
+    <form id="predictForm">
+      <label>Flavonoids</label>
+      <input type="number" name="Falvonoida" step="any" required />
+
+      <label>Malic Acid</label>
+      <input type="number" name="MalicAcid" step="any" required />
+
+      <label>Color Intensity</label>
+      <input type="number" name="Color_intensity" step="any" required />
+
+      <label>Alcohol</label>
+      <input type="number" name="Alcohol" step="any" required />
+
+      <label>Proline</label>
+      <input type="number" name="Proline" step="any" required />
+
+      <button type="submit">Predict</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("predictForm");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const params = new URLSearchParams(new FormData(form));
+      const response = await fetch(`/predict?${params.toString()}`);
+      const data = await response.json();
+      result.textContent = data;
+    });
+  </script>
+</body>
+</html>
